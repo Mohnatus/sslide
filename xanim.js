@@ -6,13 +6,12 @@ window.xanim = (function() {
     var height = el.offsetHeight;
     if (!height) {
       el.style.visibility = 'hidden';
-      var position = el.style.position || 'unset';
       el.style.position = 'absolute';
       el.style.display = 'block';
       height = el.offsetHeight;
-      el.style.display = 'none';
-      el.style.position = position;
-      el.style.visibility = 'visible';
+      el.style.display = '';
+      el.style.position = '';
+      el.style.visibility = '';
     }
     return height;
   };
@@ -62,7 +61,8 @@ window.xanim = (function() {
 
       if (currentHeight >= height) {
         clearInterval(timer);
-        el.style.height = 'auto';
+        el.style.height = '';
+        el.style.overflow = '';
         callback ? callback(el) : null;
         free(el);
       }
@@ -73,20 +73,38 @@ window.xanim = (function() {
 
   var slideUp = function slideUp(el, ms, callback) {
     var height = getHeight(el);
-    el.style.overflow = 'hidden';
 
+    var style = getComputedStyle(el);
+    var paddingTop = parseFloat(style.paddingTop) || 0;
+    var paddingBottom = parseFloat(style.paddingBottom) || 0;
+
+    el.style.overflow = 'hidden';
+    el.style.height = height;
+    el.style.minHeight = '';
+    
     var diff = getDiff(height, ms);
+    var paddingTopDiff = getDiff(paddingTop, ms);
+    var paddingBottomDiff = getDiff(paddingBottom, ms);
 
     var counter = 0;
 
     var timer = setInterval(function() {
-      var currentHeight = height - ++counter * diff;
+      var currentHeight = height - counter * diff;
       el.style.height = currentHeight + 'px';
+      el.style.paddingTop = paddingTop - counter * paddingTopDiff + 'px';
+      
+      el.style.paddingBottom = paddingBottom - counter * paddingBottomDiff + 'px';
+      
+      counter++;
 
       if (currentHeight <= 0) {
         clearInterval(timer);
+        
         el.style.display = 'none';
-        el.style.height = 'auto';
+        el.style.height = '';
+        el.style.overflow = '';
+        el.style.paddingTop = '';
+        el.style.paddingBottom = '';
         callback ? callback(el) : null;
         free(el);
       }
