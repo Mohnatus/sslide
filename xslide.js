@@ -2,6 +2,10 @@
   var updatePeriod = 5; // update period - 5ms
   var defaultSpeed = 400; // default animation speed - 400ms
 
+  var hasHeight = function(el) {
+    return !!el.offsetHeight;
+  }
+
   var getHeight = function(el) {
     var height = el.offsetHeight;
     if (!height) {
@@ -125,14 +129,18 @@
       add(slideUp, el, ms, callback);
       return el;
     };
+    el.slideToggle = function(ms, callback) {
+      if (hasHeight(el)) return el.slideUp(ms, callback);
+      return el.slideDown(ms, callback);
+    }
     
     return el;
   }
 
   if (typeof module != "undefined" && module.exports)
-    module.exports = xslide;
+    module.exports = lib;
   else
-    window.xslide = xslide;
+    window.xslide = lib;
 })();
 
 
