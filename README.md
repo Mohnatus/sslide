@@ -1,15 +1,15 @@
-# XSlide
+# SSlide
 Simple js animation library for slide effect
 
 ## Install
 
-```npm i xslide```
+```npm i sslide```
 
 ## Usage
 
 ```js
 const sslide = require('sslide');
-let slideEl = xslide(document.getElementById('element'));
+let slideEl = sslide(document.getElementById('element'));
 
 slideEl.slideDown(500, () => console.log('slide end'));
 slideEl.slideUp(500, () => console.log('slide end'));
