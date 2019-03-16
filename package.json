@@ -1,0 +1,24 @@
+{
+  "name": "xslide",
+  "version": "1.0.0",
+  "description": "Simple js animation library for slide effect",
+  "main": "xslide.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohnatus/xslide.git"
+  },
+  "keywords": [
+    "slide",
+    "dom",
+    "javascript"
+  ],
+  "author": "Mohnatus Stein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohnatus/xslide/issues"
+  },
+  "homepage": "https://github.com/Mohnatus/xslide#readme"
+}

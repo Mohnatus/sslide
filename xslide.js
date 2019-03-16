@@ -1,4 +1,4 @@
-window.xanim = (function() {
+;(function() {
   var updatePeriod = 5; // update period - 5ms
   var defaultSpeed = 400; // default animation speed - 400ms
 
@@ -8,7 +8,9 @@ window.xanim = (function() {
       el.style.visibility = 'hidden';
       el.style.position = 'absolute';
       el.style.display = 'block';
+
       height = el.offsetHeight;
+
       el.style.display = '';
       el.style.position = '';
       el.style.visibility = '';
@@ -113,7 +115,7 @@ window.xanim = (function() {
     return el;
   };
 
-  return function(el) {
+  var lib =  function(el) {
     el.queue = [];
     el.slideDown = function(ms, callback) {
       add(slideDown, el, ms, callback);
@@ -126,4 +128,12 @@ window.xanim = (function() {
     
     return el;
   }
+
+  if (typeof module != "undefined" && module.exports)
+    module.exports = xslide;
+  else
+    window.xslide = xslide;
 })();
+
+
+

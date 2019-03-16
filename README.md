@@ -1,2 +1,2 @@
 # xanim
-simple js animation library
+Simple js animation library for slide effect
