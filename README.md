@@ -8,7 +8,7 @@ Simple js animation library for slide effect
 ## Usage
 
 ```js
-const xslide = require('xslide');
+const sslide = require('sslide');
 let slideEl = xslide(document.getElementById('element'));
 
 slideEl.slideDown(500, () => console.log('slide end'));

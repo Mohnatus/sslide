@@ -140,7 +140,7 @@
   if (typeof module != "undefined" && module.exports)
     module.exports = lib;
   else
-    window.xslide = lib;
+    window.sslide = lib;
 })();
 
 
