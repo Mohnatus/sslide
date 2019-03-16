@@ -1,4 +1,4 @@
-# XSlide
+# SSlide
 Simple js animation library for slide effect
 
 ## Install
